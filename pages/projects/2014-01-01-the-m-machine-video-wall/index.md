@@ -1,0 +1,45 @@
+---
+title: The M Machine - 3D virtual light wall
+date: 03/01/2013
+description: 3D video composite concert visuals
+thumbnail: thumbnail.jpg
+---
+
+![](./thumbnail.jpg) {.full-width}
+
+The most consistent challenge I've encountered in my decade of exploring interactive media has been how to get information from point A to point B in a way that fosters creativity. Turning a knob and seeing or hearing a program react is amazing, but true expressivity comes from a careful attention to the 'physics' of the interaction. Like playing a finely crafted instrument, creativity and expressivity is dependent on the nuance, subtlety, and reactivity provided by great tool design.
+
+
+---
+
+Media artists have been empowered by a relatively recent explosion of creative technologies - Ableton Live revolutionized digital audio performance and, partnered with programs like Max/MSP, Touch Designer, and Resolume Avenue, can serve as a hub for a complete multimedia experience. But at its core, the signaling architecture most commonly used by these programs remains unchanged since its inception in the 80's.
+
+MIDI is a remarkably robust technology - standardized in 1983, its current ubiquity is testament to that fact. But with everyday computing power many orders of magnitude greater today and an almost limitless toolkit available to creative technologists, MIDI's age is showing more and more. HD video sequencing, realtime 3D composition and rendering, drone control, robotic interfacing, augmented reality, and anything imaginable can be controlled from pretty much anything... But if you want to run these things from a sequencer or most hardware controllers you'll still have to translate from a MIDI signal - which is limited to 7 bits (0-127) of data and has no semantic metadata.
+
+Enter OSC - a protocol first outlined by the CNMAT at UC Berkeley. OSC allows transmission of URL-encoded data at high data and time resolution over UDP (or TCP, with a bit of work). This means that any part of any system can be given a lexical OSC address to receive signals from anywhere else without complex encoding schemes or limits on data resolution, internally or over a network. For example, triggering the first video clip of the first layer in Resolume Avenue is as simple as sending the message `/layer1/clip1/connect 1` to whatever port Resolume is listening to, rather than a numbered MIDI mapping.
+
+
+---
+
+<video src="./m-video-wall-03.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
+<video src="./m-video-wall-04.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
+
+---
+
+It's in complex sets of high-resolution data where OSC can really shine - Large banks of lights, incredibly precise inverse kinematic controls for robotics, 3D generative content, or data from human-interfacing devices can all be routed and parsed incredibly quickly and easily - The expressivity and depth and breadth of control that creativity requires is much more readily achieved.
+
+---
+
+<video src="./m-video-wall-01.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
+
+---
+
+In order for OSC to achieve mainstream acceptance, a major change in the toolkits of creative multimedia artists is required. Ableton Live is currently the de facto standard for central dispatching of many multimedia projects, yet currently has no packaged support for OSC. There's a huge hole in the marketplace waiting to be filled by whatever's up to the task.
+
+---
+
+<video src="./m-video-wall-02.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
+
+---
+
+One of my first big programming projects was a simple OSC audio unit plugin that I worked on before starting all of the precourse work required for Hack Reactor. I used it to great effect to design and produce The M Machine's video content for their recent tour with The Glitch Mob, to great effect. I was able to control video in Resolume at sub-frame precision from the Logic timeline, and instantiate and modify video effects and real-time generated Quartz Composer content all from the DAW. It's been an exciting project, and I look forward to releasing a finished version soon.

@@ -1,18 +1,22 @@
-import React, { PropTypes } from 'react';
-import Masthead from '../src/components/Masthead';
-import Footer from '../src/components/Footer';
-import '../src/css/yuppies.css';
+import React, { PropTypes } from 'react'
+import Header from '../src/components/Header'
+import Footer from '../src/components/Footer'
+import '../src/css/page.css'
+
+import styles from './styles.module.scss'
 
 export default function Template({ children }) {
   return (
-    <main>
-      <Masthead />
-      {children}
-      <Footer />
-    </main>
-  );
+    <div className={ styles.mainContainer }>
+      <main className={ styles.mainColumn }>
+        <Header />
+        {children}
+        <Footer />
+      </main>
+    </div>
+  )
 }
 
 Template.propTypes = {
   children: PropTypes.any
-};
+}

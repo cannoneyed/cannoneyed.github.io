@@ -2,11 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import Helmet from 'react-helmet';
 import { config } from 'config'; // eslint-disable-line
-import { TweetThis, FacebookShare } from '../components/Social';
 import ReadNext from '../components/ReadNext';
-import Bio from '../components/Bio';
 import { isBlogPost, getBlogPosts, getNextPosts, getPostsFromPaths } from '../utils/blog-helpers';
-import avatar from '../../images/avatar.jpg';
+import avatar from '../../images/avatar.png';
 
 import '../css/tomorrow-night.css';
 
@@ -46,15 +44,6 @@ export default class MarkdownWrapper extends Component {
             </header>
             <div className='post-content' dangerouslySetInnerHTML={{ __html: post.body }} />
           </article>
-          <aside className='post-footer'>
-            <ul>
-              <li><TweetThis {...post} /></li>
-              <li><FacebookShare {...post} /></li>
-            </ul>
-            <ReadNext posts={nextPosts} />
-            <hr />
-            <Bio />
-          </aside>
         </section>
       );
     }
