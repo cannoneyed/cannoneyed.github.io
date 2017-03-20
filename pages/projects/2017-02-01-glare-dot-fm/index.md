@@ -27,7 +27,7 @@ Over the next few months I developed the web app [glare.fm](https://www.glare.fm
 
 ---
 
-glare.fm uses a novel geolocation-based mechanism for transferring access to the record from one person to another - At the time I started building the app, I was extremely interested in "serverless" web apps, and elected to build the app using [firebase](https://firebase.google.com/) for both its real-time updates and its built-in oauth user authentication. Working with firebase wound up presenting a number of challenges, most of which were caused by the extremely odd way that Google elected to change the firebase client API after their acquisition of the service. 
+glare.fm uses a novel geolocation-based mechanism for transferring access to the record from one person to another - At the time I started building the app, I was extremely interested in "serverless" web apps, and elected to build the app using [firebase](https://firebase.google.com/) for both its real-time updates and its built-in oauth user authentication. Working with firebase wound up presenting a number of challenges, most of which were caused by the extremely odd way that Google elected to change the firebase client API after their acquisition of the service.
 
 We elected to build a web app, rather than a native app, for a number of reasons - the biggest advantages were rapid iteration with web technologies, no app store review / update process, and the ease of distribution / sharing through a simple url.
 
@@ -41,3 +41,8 @@ glare.fm was a project that quickly grew in scale and ambition, and, as such, pr
 
 
 [\<source />](https://github.com/cannoneyed/tmm-glare)
+
+#### links
+
+[feature in Forbes](https://www.forbes.com/video/5349913137001/)<br />
+[feature in SF Weekly](http://www.sfweekly.com/music/allshookdown/s-f-band-m-machine-releasing-album-unorthodox-way/)<br />

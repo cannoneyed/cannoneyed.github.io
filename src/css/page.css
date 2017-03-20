@@ -415,7 +415,10 @@ img::selection {
 
   & h1 a {
     font-size: 1.25rem;
-    background-color: #21232d;
+    background: url('../../images/comb_penrose.png');
+    background-size: cover;
+    background-position: top;
+    background-position: 20%;
     color: #FFF;
     padding: 0 1rem 0 1rem;
     margin-left: -1rem;

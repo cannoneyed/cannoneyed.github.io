@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 
 import '../src/css/lists.css'
 
-import image from '../images/andy-blur.jpg'
+import image from '../images/andy-gray.jpg'
 import styles from './styles.module.scss'
 
 export default function SiteIndex() {
@@ -12,6 +12,7 @@ export default function SiteIndex() {
       <p>
         <h2>andy coenen</h2>
       </p>
+      {/* <img alt="profile" src={ image } className={ styles.profileImage } /> */}
       <p>
         programmer, inventor, artist and musician working and living in San Francisco
       </p>
