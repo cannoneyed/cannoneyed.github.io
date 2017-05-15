@@ -51,6 +51,6 @@ I'm incredibly proud of my homemade M Machine, and truly loved performing with i
 
 #### links
 
-[a basic explanation of sequencing process](https://www.youtube.com/watch?v=vdAZHYFNbWU)<br/>
+[a video explanation of sequencing process](https://www.youtube.com/watch?v=vdAZHYFNbWU)<br/>
 [feature in WIRED](http://www.wired.com/2012/04/m-machine-artist-collective/)<br/>
 [feature in Intel iQ](http://iq.intel.com/concerts-2-0-the-m-machine-revamps-the-visual-experience/)<br/>

@@ -22,7 +22,8 @@ holograf is a 3D algorithm and program flow visualizer that traces every value t
 
 <video src="./holograf_demo.webm" width="100%" autoplay loop class="holograf-thumbnail"></video>
 
----
-
-
 [\<source />](https://github.com/cannoneyed/holograf)
+
+#### links
+
+[Hack Reactor Blog](http://www.hackreactor.com/blog/students-create-3d-visualizations-to-map-debug-code)<br />

@@ -6,13 +6,14 @@ import { config } from 'config'; // eslint-disable-line
 export default function Header() {
   return (
     <header className='header'>
-      <h1>
-        <Link to={ prefixLink('/') }>
-          {config.header}
-        </Link>
-      </h1>
       <nav>
         <ul>
+          <li>
+            <Link to={ prefixLink('/') }>
+              cannoneyed
+            </Link>
+          </li>
+          &middot;
           <li>
             <Link to={ prefixLink('/about/') }>
               about

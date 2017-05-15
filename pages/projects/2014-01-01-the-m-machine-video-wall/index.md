@@ -13,9 +13,15 @@ In early 2013 The M Machine were invited to play at Ultra Music Festival in Miam
 <video src="./m-video-wall-05.webm" width="100%" autoplay loop></video>
 
 
+![](./collage-1.jpg) {.full-width}
+
 <video src="./m-video-wall-03.webm" width="100%" autoplay loop></video>
 <video src="./m-video-wall-04.webm" width="100%" autoplay loop></video>
 
+![](./collage-2.jpg) {.full-width}
+
 <video src="./m-video-wall-01.webm" width="100%" autoplay loop></video>
+
+![](./max-ableton.jpg) {.full-width}
 
 <video src="./m-video-wall-02.webm" width="100%" autoplay loop></video>

@@ -14,10 +14,10 @@ export default function SiteIndex() {
       </p>
       {/* <img alt="profile" src={ image } className={ styles.profileImage } /> */}
       <p>
-        programmer, inventor, artist and musician working and living in San Francisco
+        programmer, inventor, artist and musician working and living in San Francisco. I am passionate about building tools that let us turn imagination into reality.
       </p>
       <p>
-        currently working as a web engineer at <a href="https://www.patreon.com" target="_blank" >Patreon</a>
+        currently working as a senior web engineer at <a href="https://www.patreon.com" target="_blank" >Patreon</a>
       </p>
     </section>
   )
