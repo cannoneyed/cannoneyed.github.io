@@ -1,17 +1,16 @@
-/* eslint-disable */
-import generateFeed from './src/scripts/feed.js';
+import copyVideos from './src/scripts/videos.js'
 
 export function modifyWebpackConfig(config, env) {
   if (env === 'build-javascript') {
     config.merge({
       devtool: 'hidden-source-map'
-    });
+    })
   }
 
-  return config;
+  return config
 }
 
 export function postBuild(pages, callback) {
-  generateFeed(pages);
-  callback();
+  copyVideos(pages)
+  callback()
 }
