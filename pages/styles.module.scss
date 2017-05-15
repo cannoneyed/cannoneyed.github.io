@@ -1,0 +1,24 @@
+.indexImage {
+  max-width: 100%;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainColumn {
+  width: 40rem;
+
+  @media screen and (max-width: 800px) {
+    max-width: 40rem;
+    width: 100%;
+  }
+}
+
+.profileImage {
+  width: 400px;
+  margin-left: -20px;
+}
