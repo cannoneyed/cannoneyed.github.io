@@ -6,8 +6,8 @@ Source code for my blog, built with [gatsby.js](https://github.com/gatsbyjs/gats
 
 ```
 npm i -g gatsby
-git clone https://github.com/f0rr0/f0rr0.github.io
-cd f0rr0.github.io
+git clone https://github.com/cannoneyed/cannoneyed.github.io
+cd cannoneyed.github.io
 npm i
 npm run dev
 ```
