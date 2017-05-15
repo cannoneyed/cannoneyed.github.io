@@ -1,10 +1,10 @@
 {
-  "name": "yuppies",
-  "description": "f0rr0's blog (source)",
+  "name": "cannoneyed.github.io",
+  "description": "andy coenen's blog",
   "version": "1.0.0",
-  "author": "Sid Jain <sid26@ucla.edu>",
+  "author": "Andy Coenen <andrew.coenen@gmail.com>",
   "bugs": {
-    "url": "https://github.com/f0rr0/yuppies/issues"
+    "url": "https://cannoneyed.github.io"
   },
   "dependencies": {
     "babel-cli": "^6.16.0",
@@ -71,7 +71,6 @@
     "twemoji": "^2.2.0",
     "underscore.string": "^3.3.4"
   },
-  "homepage": "https://github.com/f0rr0/yuppies#readme",
   "keywords": [
     "yuppies",
     "yuppi.es",
@@ -84,7 +83,7 @@
   "license": "AGPL-3.0+",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/f0rr0/yuppies.git"
+    "url": "git+https://github.com/cannoneyed/cannoneyed.github.io.git"
   },
   "scripts": {
     "fix-css": "$(npm bin)/stylefmt -l $(ls ./src/css/*.css)",
