@@ -33,7 +33,7 @@ export default function generateFeed(pages) {
   // Parse blog posts
   pages.forEach(({ path, requirePath, data }) => {
     if (isBlogPost(path) && !data.draft) {
-      const { meta: { title, date, description }, html } = parseMd(`${resolve(__dirname, `../../${requirePath}`)}`);
+      const { meta: { title, date, description }, html } = parseMd(`${resolve(__dirname, `../../pages/${requirePath}`)}`);
 
       // Replace relative image links to absolute
       const $ = parseHtml(html, {
