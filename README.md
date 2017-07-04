@@ -5,11 +5,11 @@ Source code for my blog, built with [gatsby.js](https://github.com/gatsbyjs/gats
 ### Installation
 
 ```
-npm i -g gatsby
-git clone https://github.com/cannoneyed/cannoneyed.github.io
-cd cannoneyed.github.io
-npm i
-npm run dev
+$ npm i -g gatsby
+$ git clone https://github.com/cannoneyed/cannoneyed.github.io
+$ cd cannoneyed.github.io
+$ npm i
+$ npm run dev
 ```
 
 You should have the site running on `localhost:8000`.
@@ -17,6 +17,10 @@ You should have the site running on `localhost:8000`.
 ### Deployment
 
 Gatsby can be deployed on any static server. This one is deployed via GitHub Pages on the master branch.
+
+```
+$ npm run deploy
+```
 
 ### License
 
