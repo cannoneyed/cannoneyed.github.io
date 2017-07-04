@@ -28,9 +28,9 @@ export default function Repositories() {
     <div className={ styles.container }>
       { repositories.map(repo => (
         <div>
-          <Link to={ repo.href }>
+          <a href={ repo.href }>
             { repo.title }
-          </Link>
+          </a>
         </div>
       )) }
     </div>
