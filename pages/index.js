@@ -3,9 +3,6 @@ import React, { PropTypes } from 'react'
 
 import '../src/css/lists.css'
 
-import image from '../images/andy-gray.jpg'
-import styles from './styles.module.scss'
-
 export default function SiteIndex() {
   return (
     <section>
@@ -14,8 +11,7 @@ export default function SiteIndex() {
       </p>
       {/* <img alt="profile" src={ image } className={ styles.profileImage } /> */}
       <p>
-        programmer, inventor, artist and musician working and living in San Francisco. I am passionate about building tools that let us turn imagination into reality.
-      </p>
+        technologist working and living in San Francisco. I am passionate about building tools that let us turn imagination into reality. </p>
       <p>
         currently working as a senior web engineer at <a href="https://www.patreon.com" target="_blank" >Patreon</a>
       </p>
