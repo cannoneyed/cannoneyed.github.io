@@ -15,17 +15,20 @@ We were immediately struck by the idea of sharing music in person - remembering 
 
 ---
 
-<video src="./glare_interaction_basic.webm" width="50%" autoplay loop class="glare-thumbnail"></video>
-
----
+<figure>
+    <video src="./glare_interaction_basic.webm" width="50%" autoplay loop class="glare-thumbnail"></video>
+    <figcaption><a href="http://glare.fm" title="glare.fm home screen - the album's spread">glare.fm home screen - the album's spread</a>.</figcaption>
+</figure>
 
 Over the next few months I developed the web app [glare.fm](https://www.glare.fm), through which we pre-released the record. From November 2016 to February 2017 (when the album was officially released through "normal" channels), the album spread across the world, literally from person to person. More than 1000 people from 12 countries listened to Glare before it was released through this deliberately limiting platform.
 
 ---
 
-<video src="./glare_fm_share_mechanic.webm" width="50%" autoplay loop class="glare-thumbnail"></video>
+<figure>
+    <video src="./glare_dot_fm_share_demo.webm" width="50%" autoplay loop class="glare-thumbnail"></video>
+    <figcaption><a href="http://glare.fm" title="glare.fm share mechanism">glare.fm share mechanism</a>.</figcaption>
+</figure>
 
----
 
 glare.fm uses a novel geolocation-based mechanism for transferring access to the record from one person to another - At the time I started building the app, I was extremely interested in "serverless" web apps, and elected to build the app using [firebase](https://firebase.google.com/) for both its real-time updates and its built-in oauth user authentication. Working with firebase wound up presenting a number of challenges, most of which were caused by the extremely odd way that Google elected to change the firebase client API after their acquisition of the service.
 

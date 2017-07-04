@@ -20,7 +20,11 @@ holograf is a 3D algorithm and program flow visualizer that traces every value t
 
 ---
 
-<video src="./holograf_demo.webm" width="100%" autoplay loop class="holograf-thumbnail"></video>
+<figure>
+    <video src="./holograf_demo.webm" width="100%" autoplay loop class="holograf-thumbnail"></video>
+    <figcaption><a href="http://hologragi.io" title="holograf visualization of a simple fibonacci algorithm">holograf visualization of a simple fibonacci algorithm</a>.</figcaption>
+</figure>
+
 
 [\<source />](https://github.com/cannoneyed/holograf)
 

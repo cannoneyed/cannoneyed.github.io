@@ -11,16 +11,26 @@ The most consistent challenge I've encountered in my decade of exploring interac
 
 
 ---
-
-![](./logic.jpg) {.full-width}
+<figure>
+    <img src="./logic.jpg" width="100%" class="full-width"></img>
+    <figcaption>Logic Pro X with OSCillate plugin</figcaption>
+</figure>
 
 Media artists have been empowered by a relatively recent explosion of creative technologies - Ableton Live revolutionized digital audio performance and, partnered with programs like Max/MSP, Touch Designer, and Resolume Avenue, can serve as a hub for a complete multimedia experience. But at its core, the signaling architecture most commonly used by these programs remains unchanged since its inception in the 80's.
 
 MIDI is a remarkably robust technology - standardized in 1983, its current ubiquity is testament to that fact. But with everyday computing power many orders of magnitude greater today and an almost limitless toolkit available to creative technologists, MIDI's age is showing more and more. HD video sequencing, realtime 3D composition and rendering, drone control, robotic interfacing, augmented reality, and anything imaginable can be controlled from pretty much anything... But if you want to run these things from a sequencer or most hardware controllers you'll still have to translate from a MIDI signal - which is limited to 7 bits (0-127) of data and has no semantic metadata.
 
+<figure>
+    <img src="./max-ableton.jpg" width="100%" class="full-width"></img>
+    <figcaption>Max / MSP patch driving OSC with Ableton</figcaption>
+</figure>
+
 Enter OSC - a protocol first outlined by the CNMAT at UC Berkeley. OSC allows transmission of URL-encoded data at high data and time resolution over UDP (or TCP, with a bit of work). This means that any part of any system can be given a lexical OSC address to receive signals from anywhere else without complex encoding schemes or limits on data resolution, internally or over a network. For example, triggering the first video clip of the first layer in Resolume Avenue is as simple as sending the message `/layer1/clip1/connect 1` to whatever port Resolume is listening to, rather than a numbered MIDI mapping.
 
-![](./quartz.jpg) {.full-width}
+<figure>
+    <img src="./quartz.jpg" width="100%" class="full-width"></img>
+    <figcaption>Quartz composer composition for generative visuals</figcaption>
+</figure>
 
 ---
 
