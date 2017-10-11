@@ -1,5 +1,5 @@
 ---
-title: §/ doglogic - higher order functions
+title: / doglogic - higher order functions
 date: 02/01/2017
 description: debut solo album and art project
 thumbnail: thumbnail.jpg
@@ -14,11 +14,11 @@ thumbnail: thumbnail.jpg
   </figcaption>
 </figure>
 
-## §/ A long wait
+## / a long wait
 During my years as a member of [The M Machine](https://www.the-m-machine.com), I wrote a great deal of music that never really fit into our discography. I've spent the last two years completing a solo record largely comprised of this music. I tend to think about and write music very visually, both in terms of the physical arrangement of notes and the "physical" texture of the sound. This record is a real distillation of that approach - each song is a world unto itself, a level in a video game, with the timbral and harmonic textures all reinforcing the feeling of some discrete space. I'm calling the record **higher order functions**, and the project **doglogic**.
 
-## §/ A simple pattern
-While writing a good portion of the music in the winter of 2016, my colleague [Thomas](https://twitter.com/beirnet) and I were geeking out on cellular automata - simple algorithms that, when applied to pixels in a grid, can generate patterns of striking intricacy and complexity.
+## / a simple pattern
+While writing a good portion of the music in the winter of 2016, my colleague [Thomas Beirne](https://twitter.com/beirnet) and I were geeking out on cellular automata - simple algorithms that, when applied to pixels in a grid, can generate patterns of striking intricacy and complexity.
 
 While digging through forums of the Wolfram Mathematica website (Stephen Wolfram pioneered research into cellular automata throughout his career), I came upon a particularly striking image. A chaotic smear of colors, somehow given order and form by the large tear running through the center.
 
@@ -31,9 +31,9 @@ I was instantly captivated by the image, and soon realized that there was an ext
 
 I reached out to Reinhard to ask him for his permission to use the piece as my album art, and we quickly became friends. I told him that I wanted to do an interactive piece tying together his art with my music, but it took me months to finally arrive at an idea.
 
-## §/ Splitting the album
+## / splitting the album
 
-One of the most important goals I had for releasing the album was to make it as "open source" as possible - I want people to be able to look into all of the component pieces that come together to create the cohesive whole. Electronic music, in particular, is so dependent on the balance between sounds that an artist's sonic palette and array of tricks often become closely-guarded secrets. One of the true joys of the open-source community is the inspiration provided from looking "under the hood" of exciting projects, and I really wanted this album to be released in a similar fashion. I want to let people see the decomposed form of the album, and contrast it with the final composition.
+One of the most important goals I had for releasing the album was to make it as "open source" as possible - I want people to be able to look into all of the component pieces that come together to create the cohesive whole. Electronic music, in particular, is so dependent on the balance between sounds that an artist's sonic palette and array of tricks often become closely-guarded secrets. One of the true joys of the open-source software community is the inspiration provided from looking "under the hood" of exciting projects, and I really wanted this album to be released in a similar fashion. I want to let people see the decomposed form of the album, and contrast it with the final composition.
 
 This sentiment tied in extremely well to the art itself - the tension between form and formlessness, and the apparent structure coming from the breaks in the structure - it really resonated with the feelings I had about the project. However, it took a conversation about these themes with my colleague [Luke Davis](https://github.com/lucaswadedavis) to inspire the final project. Luke pointed out that my album had 14 songs, and the piece had 14 colors, and I was immediately inspired.
 
@@ -43,11 +43,11 @@ This sentiment tied in extremely well to the art itself - the tension between fo
 
 Each of the 14 colors of pixels would correspond to a song on my album, and each of the 36,570  pixels would correspond with a deconstructed piece of the album.
 
-## § A deep dive
+## / a giant number
 
 I'd just done a big dive into Three.js and webGL for my previous project with The M Machine ([glare dot fm](https://www.glare.fm)), and knew that I wanted to animate the pixels as I interacted with the scene. I'd had a pretty good experience creating a "hybrid" React and Three.js app for that project, and decided to use the same overall approach, swapping out redux for a mobx state management solution. The boundary between declarative react code and imperative three code is always a bit tricky, and mobx's classic object-oriented approach is much better suited to sharing state across that border.
 
-Computing the cellular automaton on the fly was always my goal, but in practice it was never really feasible because of the insanely large numbers involved in the code - neither JS nor webGl (which is constrained to 32 bit math) was really suitable. Here's Reinhard's Mathematica code for generating the piece:
+Computing the cellular automaton on the fly in JavaScript was always a stretch goal, but in order to get working on the project more quickly I opted to precompute the image data in Mathematica. Here's Reinhard's Mathematica code for generating the piece:
 
 ```
 ArrayPlot[
@@ -112,4 +112,17 @@ ArrayPlot[
 
 That rule number is approximately `9.4 * 10^3144`! As a "shortcut", I simply piped the output of the code run in Mathematica and created a JSON file with each pixel mapped to its corresponding hex character code.
 
-Once the data was encoded as a
+Once the data was encoded as JSON, it was just a matter of importing it into the webpack bundle and initializing the webGL scene with the pixel data.
+
+## / some shader funniness
+
+My next step was to render the pixels from the CA and set up some interactivity in the scene. The concept was simple - clicking on any of the pixels would zoom into the pixel, where an audio player for the corresponding sound would appear. My initial strategy for setting up the scene was to use a simple Three.js particle shader, with each pixel of the art represented by a simple square particle. Setting up a simple raycaster to handle clicking on the pixels and some simple zoom tween logic, everything looked great...
+
+<figure>
+    <video src="./zoom.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
+    <figcaption>The zoom effect (with the happy accident of "pulling apart")</figcaption>
+</figure>
+
+...until it didn't. I was pleasantly surprised to find out that past a certain zoom level, the simple square particles i was using to represent the pixels stopped growing, creating a lovely "pulling apart" effect when zoomed in close enough. This pleasant surprise quickly turned into an interesting challenge, since this effect turned out to be different across different screen resolutions and GPUs.
+
+So in order to
