@@ -13,7 +13,7 @@ export default function SiteIndex() {
       <p>
         technologist working and living in San Francisco. I am passionate about building tools that let us turn imagination into reality. </p>
       <p>
-        currently working as a senior web engineer at <a href="https://www.patreon.com" target="_blank" >Patreon</a>
+        currently working as a software engineer at <a href="https://research.google.com/teams/brain/healthcare/" target="_blank" >Google Brain</a>
       </p>
     </section>
   )

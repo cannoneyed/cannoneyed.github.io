@@ -125,4 +125,4 @@ My next step was to render the pixels from the CA and set up some interactivity 
 
 ...until it didn't. I was pleasantly surprised to find out that past a certain zoom level, the simple square particles i was using to represent the pixels stopped growing, creating a lovely "pulling apart" effect when zoomed in close enough. This pleasant surprise quickly turned into an interesting challenge, since this effect turned out to be different across different screen resolutions and GPUs.
 
-So in order to
+## / to be continued...
