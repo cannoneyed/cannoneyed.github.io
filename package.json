@@ -43,7 +43,6 @@
     "medium-sdk": "0.0.3",
     "mkdirp": "^0.5.1",
     "moment": "^2.14.1",
-    "node-sass": "^4.5.3",
     "open": "0.0.5",
     "ora": "^0.3.0",
     "postcss-browser-reporter": "^0.5.0",
@@ -95,8 +94,11 @@
     "clean": "rm -rf ./public",
     "prebuild": " npm run clean && $(npm bin)/svgo -f ./icons -q",
     "build": "gatsby build --prefix-links",
-    "deploy": "npm run prebuild && gatsby build --prefix-links && $(npm bin)/gh-pages -d public -b master",
+    "deploy": "npm run prebuild && npm run build && $(npm bin)/gh-pages -d public -b master",
     "new": "$(npm bin)/babel-node ./src/scripts/new.js",
     "medium": "$(npm bin)/babel-node ./src/scripts/medium.js ./pages/blog"
+  },
+  "resolutions": {
+    "**/fsevents": "^1.2.9"
   }
 }

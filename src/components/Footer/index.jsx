@@ -1,5 +1,4 @@
-import React from 'react';
-import { config } from 'config'; // eslint-disable-line
+import React from "react";
 
 export default function Footer() {
   return (

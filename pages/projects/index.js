@@ -1,26 +1,25 @@
-import { config } from 'config'; // eslint-disable-line
-import React, { PropTypes } from 'react'
-import Helmet from 'react-helmet'
+import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 
-import Projects from '../../src/components/Projects'
-import Repositories from '../../src/components/Repositories'
+import Projects from '../../src/components/Projects';
+import Repositories from '../../src/components/Repositories';
 
 export default function BlogIndex({ route }) {
   return (
-    <section className='content'>
-      <Helmet title='projects' />
+    <section className="content">
+      <Helmet title="projects" />
       <header>
         <h2>selected projects</h2>
       </header>
-      <Projects route={ route } />
+      <Projects route={route} />
       <header>
         <h2>selected repositories</h2>
       </header>
       <Repositories />
     </section>
-  )
+  );
 }
 
 BlogIndex.propTypes = {
-  route: PropTypes.object,
-}
+  route: PropTypes.object
+};

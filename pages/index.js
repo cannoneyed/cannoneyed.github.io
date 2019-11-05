@@ -1,7 +1,6 @@
-import { config } from 'config'; // eslint-disable-line
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
-import '../src/css/lists.css'
+import '../src/css/lists.css';
 
 export default function SiteIndex() {
   return (
@@ -11,14 +10,22 @@ export default function SiteIndex() {
       </p>
       {/* <img alt="profile" src={ image } className={ styles.profileImage } /> */}
       <p>
-        technologist working and living in San Francisco. I am passionate about building tools that let us turn imagination into reality. </p>
+        technologist working and living in San Francisco. I am passionate about
+        building tools that let us turn imagination into reality.{' '}
+      </p>
       <p>
-        currently working as a software engineer at <a href="https://research.google.com/teams/brain/healthcare/" target="_blank" >Google Brain</a>
+        currently working as a software engineer at{' '}
+        <a
+          href="https://research.google.com/teams/brain/healthcare/"
+          target="_blank"
+        >
+          Google Brain
+        </a>
       </p>
     </section>
-  )
+  );
 }
 
 SiteIndex.propTypes = {
-  route: PropTypes.object,
-}
+  route: PropTypes.object
+};
