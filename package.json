@@ -43,7 +43,7 @@
     "medium-sdk": "0.0.3",
     "mkdirp": "^0.5.1",
     "moment": "^2.14.1",
-    "open": "0.0.5",
+    "open": "6.0.0",
     "ora": "^0.3.0",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^2.8.0",
