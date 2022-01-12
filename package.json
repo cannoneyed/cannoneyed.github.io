@@ -33,7 +33,7 @@
     "lodash.kebabcase": "^4.1.1",
     "lodash.sortby": "^4.7.0",
     "lodash.uniqby": "^4.7.0",
-    "markdown-it": "^7.0.1",
+    "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^2.5.0",
     "markdown-it-attrs": "^0.7.0",
     "markdown-it-emoji": "^1.3.0",
