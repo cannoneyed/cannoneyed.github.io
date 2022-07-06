@@ -42,7 +42,7 @@
     "md-yaml-json": "^1.1.0",
     "medium-sdk": "0.0.3",
     "mkdirp": "^0.5.1",
-    "moment": "^2.14.1",
+    "moment": "^2.29.4",
     "open": "0.0.5",
     "ora": "^0.3.0",
     "postcss-browser-reporter": "^0.5.0",
