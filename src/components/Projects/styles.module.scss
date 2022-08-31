@@ -1,0 +1,49 @@
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.cell {
+  display: block;
+  position: relative;
+
+  > a:after {
+    display: none;
+  }
+
+  &:hover {
+    filter: brightness(155%);
+  }
+
+  transition: all 1000ms linear;
+}
+
+.responsiveImage {
+  max-width: 100%;
+}
+
+.projectTitle {
+  position: absolute;
+  bottom: 1rem;
+  color: white;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+@media screen and (min-width: 600px) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .cell {
+    width: 49%;
+    display: inline-block;
+    text-align: center;
+  }
+}

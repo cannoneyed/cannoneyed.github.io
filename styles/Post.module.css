@@ -1,0 +1,46 @@
+.paragraph {
+  padding-bottom: 1.125rem;
+}
+
+.figure {
+  padding: 1.125rem 0 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.caption {
+  margin: 10px 0 -10px;
+  font-size: .9rem;
+  font-style: italic;
+  text-align: center
+}
+
+.title {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.projectsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 10px;
+}
+
+
+.projectThumb {
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+}
+
+.projectTitle {
+  position: absolute;
+  bottom: 1rem;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+}
