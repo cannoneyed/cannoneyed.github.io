@@ -7,7 +7,6 @@ import Markdown from "../components/markdown";
 import styles from "../styles/Post.module.css";
 
 export default function About({ aboutContent }) {
-  console.log({ aboutContent });
   return (
     <div>
       <h3 className={styles.title}>about</h3>
