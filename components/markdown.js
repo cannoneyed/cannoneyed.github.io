@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote";
-import Image from "next/image";
 import Video from "./video";
 
 import styles from "../styles/Post.module.css";
@@ -12,7 +11,7 @@ export const components = {
     // height and width are part of the props, so they get automatically passed here with {...props}
     return (
       <div className={styles.figure}>
-        <Image {...props} layout="responsive" loading="lazy" />
+        <img className={styles.image} {...props} loading="lazy" />
         <figcaption className={styles.caption}>{props.alt}</figcaption>
       </div>
     );

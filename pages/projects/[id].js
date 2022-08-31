@@ -24,11 +24,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const projectData = await getProjectData(params.id);
-  const mdxSource = await serialize(projectData.content, {
-    mdxOptions: {
-      rehypePlugins: [[imageSize, { dir: `public` }]],
-    },
-  });
+  const mdxSource = await serialize(projectData.content);
   return {
     props: {
       projectMetadata: projectData.metadata,

@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@next/mdx": "^12.2.5",
+    "gh-pages": "^4.0.0",
     "gray-matter": "^4.0.3",
     "next": "12.2.5",
     "next-mdx-remote": "^4.1.0",
+    "next-optimized-images": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-img-size": "^1.0.1"

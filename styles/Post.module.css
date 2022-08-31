@@ -5,6 +5,19 @@
 .figure {
   padding: 1.125rem 0 1.125rem;
   margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.image {
+  width: 100%;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));
+  border-radius: 4px;
+}
+
+.video {
+  width: 100%;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));
+  border-radius: 4px;
 }
 
 .caption {
@@ -31,6 +44,9 @@
 .projectThumb {
   cursor: pointer;
   position: relative;
+  width: 100%;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));
+  border-radius: 4px;  
 }
 
 .projectTitle {
