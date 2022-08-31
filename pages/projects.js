@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SelectedRepos from "../components/selected-repos";
 
 import { getProjectsMetaData } from "../lib/get-data.js";
 
@@ -31,6 +32,7 @@ export default function Projects({ projectsData }) {
           );
         })}
       </div>
+      <SelectedRepos />
     </>
   );
 }
