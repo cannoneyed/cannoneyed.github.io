@@ -2,17 +2,10 @@
 title: dog logic - higher order functions
 date: 02/01/2017
 description: debut solo album and art project
-thumbnail: thumbnail.jpg
+thumbnail: /img/projects/thumbnail-dog-logic.jpg
 ---
 
-<figure>
-  <a href="http://higherorderfunctions.com">
-    <img src="./thumbnail.jpg" class="full-width"></img>
-  </a>
-  <figcaption>
-    <a href="http://higherorderfunctions.com">higher order functions</a>
-  </figcaption>
-</figure>
+![higher order functions](/img/projects/thumbnail-dog-logic.jpg)
 
 ## / a long wait
 
@@ -26,10 +19,7 @@ While digging through forums of the Wolfram Mathematica website (Stephen Wolfram
 
 I was instantly captivated by the image, and soon realized that there was an extremely interesting story surrounding the piece and the artist behind its conception. [Reinhard Danelzik](https://www.danelzik.eu/) is a german artist who, after being inspired by Stephen Wolfram's _A New Kind of Science_, spent months searching automata in Mathematica before finding the piece. Reinhard then proceeded to paint each pixel of the composition across 12 panels.
 
-<figure>
-    <img src="./reinhard.jpg"></img>
-    <figcaption><a href="https://www.danelzik.eu/" title="Reinhard with painting">Reinhard Danelzik with his work</a>.</figcaption>
-</figure>
+![Reinhard Danelzik with his work](/img/projects/reinhard.jpg)
 
 I reached out to Reinhard to ask him for his permission to use the piece as my album art, and we quickly became friends. I told him that I wanted to do an interactive piece tying together his art with my music, but it took me months to finally arrive at an idea.
 
@@ -39,9 +29,7 @@ One of the most important goals I had for releasing the album was to make it as 
 
 This sentiment tied in extremely well to the art itself - the tension between form and formlessness, and the apparent structure coming from the breaks in the structure - it really resonated with the feelings I had about the project. However, it took a conversation about these themes with my colleague [Luke Davis](https://github.com/lucaswadedavis) to inspire the final project. Luke pointed out that my album had 14 songs, and the piece had 14 colors, and I was immediately inspired.
 
-<figure>
-    <img src="./zoom.gif"></img>
-</figure>
+![](/img/projects/zoom.gif)
 
 Each of the 14 colors of pixels would correspond to a song on my album, and each of the 36,570 pixels would correspond with a deconstructed piece of the album.
 
@@ -120,10 +108,10 @@ Once the data was encoded as JSON, it was just a matter of importing it into the
 
 My next step was to render the pixels from the CA and set up some interactivity in the scene. The concept was simple - clicking on any of the pixels would zoom into the pixel, where an audio player for the corresponding sound would appear. My initial strategy for setting up the scene was to use a simple Three.js particle shader, with each pixel of the art represented by a simple square particle. Setting up a simple raycaster to handle clicking on the pixels and some simple zoom tween logic, everything looked great...
 
-<figure>
-    <video src="./zoom.webm" width="100%" autoplay loop class="glare-thumbnail"></video>
-    <figcaption>The zoom effect (with the happy accident of "pulling apart")</figcaption>
-</figure>
+<Video
+  src="/img/projects/zoom.webm"
+  caption='The zoom effect (with the happy accident of "pulling apart")'
+/>
 
 ...until it didn't. I was pleasantly surprised to find out that past a certain zoom level, the simple square particles i was using to represent the pixels stopped growing, creating a lovely "pulling apart" effect when zoomed in close enough. This pleasant surprise quickly turned into an interesting challenge, since this effect turned out to be different across different screen resolutions and GPUs.
 

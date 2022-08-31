@@ -35,7 +35,7 @@ a:after {
   transition-delay: .1s;
 }
 
-code {
+pre > code {
   font-size: .9rem;
   background-color: #1d1f21;
   color: #c5c8c6;
@@ -44,6 +44,16 @@ code {
   white-space: pre;
   overflow: auto;
   box-shadow: 
+}
+
+code {
+  font-size: .9rem;
+  color: #1d1f21;
+  background-color: #f1f1f1;
+  font-family: Menlo,Monaco,Consolas,monospace;
+  display: inline-block;
+  padding: 0 0.5em;
+  border-radius: 5px;
 }
 
 * {

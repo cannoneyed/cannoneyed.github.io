@@ -21,17 +21,14 @@
 }
 
 .projectsGrid {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 50%;
   margin-bottom: 1rem;
-  gap: 10px;
+  grid-gap: 10px;
 }
 
 
 .projectThumb {
-  flex-grow: 1;
   cursor: pointer;
   position: relative;
 }
