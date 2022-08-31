@@ -9,6 +9,7 @@ module.exports = withMDX({
   },
   pageExtensions: ["js", "jsx", "mdx"],
   images: {
-    unoptimized: true,
+    loader: "akamai",
+    path: "",
   },
 });
