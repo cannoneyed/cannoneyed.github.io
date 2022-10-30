@@ -3,7 +3,7 @@ import imageSize from "rehype-img-size";
 import { getAllProjectsPath, getProjectData } from "../../lib/get-data";
 import Markdown from "../../components/markdown";
 
-import styles from "../../styles/Post.module.css";
+import styles from "../../styles/Project.module.css";
 
 export default function Project({ projectMetadata, postContent }) {
   return (

@@ -1,0 +1,29 @@
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 1rem;
+  grid-gap: 10px;
+}
+
+.projectThumb {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.4));
+  border-radius: 4px;
+}
+
+.projectTitle {
+  position: absolute;
+  bottom: 1rem;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 800px) {
+  .projectsGrid {
+    grid-template-columns: 100%;
+  }
+}

@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
 import Video from "./video";
 
-import styles from "../styles/Post.module.css";
+import styles from "../styles/Project.module.css";
 
 // this object will contain all the replacements we want to make
 export const components = {

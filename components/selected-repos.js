@@ -28,7 +28,7 @@ import styles from "../styles/App.module.css";
 export default function SelectedRepos() {
   return (
     <>
-      <h3>selected repos / articles</h3>
+      <h3 className={styles.title}>selected repos / articles</h3>
       <div>
         {SELECTED_REPOS.map((repo) => {
           return (

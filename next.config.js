@@ -1,3 +1,5 @@
+const ghPages = process.env.DEPLOY_TARGET === "gh-pages";
+
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
 });
@@ -12,4 +14,6 @@ module.exports = withMDX({
     loader: "akamai",
     path: "",
   },
+  basePath: ghPages ? "/blog/" : "",
+  assetPrefix: ghPages ? "/blog/" : "",
 });

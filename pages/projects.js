@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import SelectedRepos from "../components/selected-repos";
+import { VerticalSpacer } from "../components/spacer";
 
 import { getProjectsMetaData } from "../lib/get-data.js";
 
-import styles from "../styles/Post.module.css";
+import styles from "../styles/Projects.module.css";
 
 export default function Projects({ projectsData }) {
   return (
@@ -32,6 +33,7 @@ export default function Projects({ projectsData }) {
           );
         })}
       </div>
+      <VerticalSpacer height={50} />
       <SelectedRepos />
     </>
   );

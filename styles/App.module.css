@@ -10,12 +10,8 @@
 }
 
 .mainColumn {
-  width: 40rem;
-
-  @media screen and (max-width: 800px) {
-    max-width: 40rem;
-    width: 100%;
-  }
+  max-width: 40rem;
+  padding: 10px;
 }
 
 .profileImage {
@@ -40,4 +36,10 @@
 
 .repoDescription {
   font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .mainColumn {
+    width: 100%;
+  }
 }
