@@ -1,17 +1,18 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
+import Image from "next/image";
 import imageSize from "rehype-img-size";
 import { getAboutData } from "../lib/get-data";
 import Markdown from "../components/markdown";
-
 import styles from "../styles/Project.module.css";
 
 export default function About({ aboutContent }) {
   return (
-    <div>
-      <h3 className={styles.title}>about</h3>
+    <>
+      <h2 className={styles.title}>about</h2>
+      <Image src="/andy_profile.jpg" alt="andy coenen" width={200} height={200} />
       <Markdown {...aboutContent} />
-    </div>
+    </>
   );
 }
 
