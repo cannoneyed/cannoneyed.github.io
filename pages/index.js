@@ -6,7 +6,7 @@ export default function Home() {
       <p>
         currently working as a software engineer doing AI research at{" "}
         <a href="https://pair.withgoogle.com/" target="_blank" rel="noreferrer">
-          Google Brain
+          Google DeepMind
         </a>
         . living in the NYC area.
       </p>
