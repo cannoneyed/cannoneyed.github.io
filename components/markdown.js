@@ -5,6 +5,10 @@ import styles from "../styles/Project.module.css";
 
 // this object will contain all the replacements we want to make
 export const components = {
+  li: (props) => <li className={styles.listItem} {...props} />,
+  input: (props) => <input className={styles.checkbox} {...props} />,
+  li: (props) => <li className={styles.listItem} {...props} />,
+  input: (props) => <input className={styles.checkbox} {...props} />,
   p: (props) => <div className={styles.paragraph} {...props}></div>,
   Video: (props) => <Video {...props} />,
   img: (props) => {

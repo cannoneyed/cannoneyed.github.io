@@ -1,4 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
+import remarkGfm from "remark-gfm";
 import imageSize from "rehype-img-size";
 import { getAllProjectsPath, getProjectData } from "../../lib/get-data";
 import Markdown from "../../components/markdown";
@@ -24,7 +25,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const projectData = await getProjectData(params.id);
-  const mdxSource = await serialize(projectData.content);
+  const mdxSource = await serialize(projectData.content, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+    },
+  });
   return {
     props: {
       projectMetadata: projectData.metadata,

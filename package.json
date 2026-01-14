@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next-remote-watch posts",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -19,10 +19,12 @@
     "next-optimized-images": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype-img-size": "^1.0.1"
+    "rehype-img-size": "^1.0.1",
+    "remark-gfm": "3.0.1"
   },
   "devDependencies": {
     "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5"
+    "eslint-config-next": "12.2.5",
+    "next-remote-watch": "^2.0.0"
   }
 }

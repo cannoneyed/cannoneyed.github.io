@@ -1,0 +1,14 @@
+# App Fixes
+
+In @src/app/src i'm noticing a few issues:
+
+First, when I access the deployed app for the first time, I get a 404 for the pmtiles manifest file. Specifically, I see this error:
+
+```
+PMTiles not available, falling back to legacy manifest: Error: Server returned no content-length header or content-length exceeding request. Check that your storage backend supports HTTP Byte Serving.
+    at FetchSource.<anonymous> (index.ts:468:13)
+    at Generator.next (<anonymous>)
+    at s (browser.js:2527:3)
+```
+
+Second, the default zoom is way too zoomed in when loading the app from a wide monitor. Is this zoom level exactly the same across screens or is it different depending on the screen size?
