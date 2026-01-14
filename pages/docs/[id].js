@@ -2,13 +2,15 @@ import { serialize } from "next-mdx-remote/serialize";
 import { getAllDocsPath, getDocData } from "../../lib/get-data";
 import Markdown from "../../components/markdown";
 
-import styles from "../../styles/Project.module.css";
+import styles from "../../styles/Doc.module.css";
 
 export default function Doc({ docMetadata, postContent }) {
   return (
     <div>
       <h3 className={styles.title}>{docMetadata.title}</h3>
-      <Markdown {...postContent} />
+      <div className={styles.mdxContainer}>
+        <Markdown {...postContent} />
+      </div>
     </div>
   );
 }

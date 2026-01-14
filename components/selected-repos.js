@@ -1,5 +1,11 @@
 const SELECTED_REPOS = [
   {
+    url: "https://github.com/PAIR-code/wordcraft",
+    name: "wordcraft",
+    description:
+      "LLM-powered text editor with an emphasis on short story writing.",
+  },
+  {
     url: "https://github.com/PAIR-code/scatter-gl",
     name: "scatter-gl",
     description:

@@ -16,6 +16,9 @@ export const components = {
       </div>
     );
   },
+  Gemini: (props) => {
+    return <img src="/gemini.svg" className={styles.geminiIcon} {...props} />;
+  },
 };
 
 export default function Markdown(postContent) {

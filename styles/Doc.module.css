@@ -27,10 +27,11 @@
   text-align: center
 }
 
-.geminiIcon {
-  display: inline-block;
-  vertical-align: text-bottom;
-  height: 1.5rem;
-  width: auto;
-  margin-right: 0.5rem;
+.mdxContainer :global(.user-chat-message) {
+    border-radius: 24px 4px 24px 24px;
+    max-width: calc(476px - 12px * 2);
+    align-self: flex-end;
+    border: 1px solid #ccc;
+    padding: 12px 12px 0 12px;
+    margin-left: auto;
 }
