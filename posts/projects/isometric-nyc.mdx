@@ -92,13 +92,11 @@ Even if you’re not writing code by hand, it’s critical to follow software en
 - Simple and boring tech is better  
 - Iteration is better than up-front design
 
-Keeping this in mind, I opted to design an end-to-end generation application to facilitate the process of generating the tiles. Experience shows that you’ll hit edge cases and hit them fast (and oh did we), so it’s good practice to start small before scaling things up. I whipped up a spec and had the agent generate a simple system for driving generation:
+Keeping this in mind, I opted to design an end-to-end generation application to facilitate the process of generating the tiles. Experience shows that you’ll hit edge cases and hit them fast (and oh did I), so it’s good practice to start small before scaling things up. I whipped up a spec and had the agent generate a simple system for driving generation:
 
 - A schema centered around 512x512 pixel “quadrants”, with a given model call generating a 2x2 quadrant image from an input with a mask.  
 - A Sqlite database to store all quadrants along with their coordinates \+ optional metadata  
 - A web application for displaying the generated quadrants and selecting quadrants to generate.
-
-<Video src="/img/projects/isometric-nyc/gen_app_screencast.webm" />
 
 [tasks/007_e2e_generation.md](/tasks/007_e2e_generation)  
 [tasks/008_e2e_generation_pixels.md](/tasks/008_e2e_generation_pixels)  
@@ -107,16 +105,19 @@ Keeping this in mind, I opted to design an end-to-end generation application to 
 
 And lo and behold, with a bit of back-and-forth I had a working web application for progressively generating tile data. 
 
+<Video src="/img/projects/isometric-nyc/gen_app_screencast.webm" />
+
 ### / Micro-tools
 
-Everyone who’s built software before AI knows the feeling of needing a tool to make it easier to analyze or debug some part of the system. You stop what you’re doing and get ready to hammer something out, and realize that it’s a much more nuanced problem than you’d thought. You dig a bit deeper and accept that it’ll take hours or days or weeks to build, and you go back to the main task dejected. Maybe you file a todo that you know deep down will never get done.
+Everyone who’s built software before AI knows the feeling of needing a tool to make it easier to analyze or debug some part of the system. You stop what you’re doing and get ready to hammer something out, and realize that it’s a much more thorny problem than you’d thought. You dig a bit deeper and accept that it’ll take hours or days or weeks to build, and you go back to the main task dejected. Maybe you file a todo that you know deep down will never get done.
 
 AI agents change everything. Any micro-tool you can imagine is just a few instructions away. Hell, the agent can even build it in a background thread in an isolated work branch. And it’ll be done in minutes.
 
 I built a wide variety of these micro-tools across the application. Here are a few off the top of my head
 
-- Bounds app to visualize generated/in-progress tiles superimposed on a real map of NYC. Eventually this evolved into a full-fledged boundary polygon editor to determine the edges of the final exported tiles  
-- Water classifier to classify whether or not a given quadrant partially or completely contained water.  
+- **Bounds app** to visualize generated/in-progress tiles superimposed on a real map of NYC. Eventually this evolved into a full-fledged boundary polygon editor to determine the edges of the final exported tiles  
+- **Water classifier** to classify whether or not a given quadrant partially or completely contained water.  
+- **Training data generator** to generate training data for the Qwen/Image-Edit model. 
 
 [tasks/014_bounds_app.md](/tasks/014_bounds_app)  
 
@@ -130,7 +131,7 @@ CLI tools are very easy for the agent to use, test, and debug. They also encoura
 
 ### / Edge Cases
 
-Everyone who’s worked in software knows the feeling - you’ve just built the killer tool that’s going to solve all your problems. You’ve thrown a bunch of test cases at it and it just keeps working, and you’re certain that you’re 90% done with the project. And then you hit an edge case, and realize, once again, that the last 10% of the work takes 90% of the time.
+Everyone who’s worked in software knows the feeling: you’ve just built the killer tool that’s going to solve all your problems. You’ve thrown a bunch of test cases at it and it just keeps working, and you’re certain that you’re 90% done with the project. And then you hit an edge case, and realize, once again, that the last 10% of the work takes 90% of the time.
 
 There were too many edge cases to give justice to here, but I’ll focus on two particular issues that caused a lot of downstream challenges: **water** and **trees**.
 
@@ -152,7 +153,7 @@ I built a number of micro-tools to help make this work easier, including:
 - Custom prompting \+ negative prompting and model-swappability for running generation  
 - Export/import to/from Affinity (photo editing software) for the most manual fixes
 
-But at the end of the day, the last 10% will take up 90% of the time and, as always, the difference between good enough and great is the amount of love you put into the work.
+But at the end of the day, the last 10% always takes up 90% of the time and, as always, the difference between good enough and great is the amount of love you put into the work. So in the end, I rolled up my sleeves and threw a lot of time into manually fixing these edge cases.
 
 [tasks/018_water_fix.md](/tasks/018_water_fix)  
 
@@ -174,7 +175,7 @@ Of course, now I needed to build a lot of tooling to manage this scale, includin
 
 Now that I’d scaled up generation and addressed some of the edge cases, I set off to automate as much of the work as I could. Unfortunately, this is where the project (and the models) failed the hardest.
 
-First off, it was *extremely* difficult to get the agents to implement and understand an efficient tiling algorithm. The rules for generation are fairly simple - no quadrant may be generated such that a “seam” will be present. 
+Interestingly, it was *extremely* difficult to get the agents to implement and understand an efficient tiling algorithm. The rules for generation are fairly simple - no quadrant may be generated such that a “seam” will be present. 
 
 ![a sample of tile generation rules to avoid seams](/img/projects/isometric-nyc/gen_rules.png)
 
@@ -202,15 +203,13 @@ But after quite a bit of debugging I was able to get the app up, running, and de
 
 <iframe src="https://cannoneyed.github.io/isometric-nyc/" width="100%" height="600" />
 
-Once again the same lesson applies - even though you’re not writing any more code, you’re still doing software engineering.
-
 ## / Takeaways  
 
 ### / Cheap, fast software 
 
 The biggest joy of this project was the ability to build tools at the speed of thought. As a software developer, I think of a million little tools I’d *like* to have but would take a day or a week to build. With Claude or Cursor, I can whip them up in 5 minutes. This is absolutely transformational - it’s like having an infinite toolbox.
 
-Of course, software engineering rules still apply. Entropy is real; as you add features, complexity grows, and without architecture, you accumulate tech debt. But here’s the thing: for throwaway tools—debuggers, visualizers, script runners—**code quality doesn't really matter.**
+Of course, software engineering rules still apply. Entropy is everything; as you add features, complexity grows, and without architecture, you accumulate tech debt. But here’s the thing: for throwaway tools—debuggers, visualizers, script runners—**code quality doesn't really matter.**
 
 I know how crappy the code for my generation app is. It’s a mess of imperative JavaScript and spaghetti event listeners that I’d never write by hand. But it’s not going out to customers. It doesn’t need to scale. I’m the only user, and the bugs are tolerable given how little it cost me. The fact that it is cheap and fast more than makes up for the fact that it isn't all that great.
 
