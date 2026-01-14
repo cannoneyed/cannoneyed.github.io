@@ -29,21 +29,22 @@ Best case scenario, I’ll make something cool, and worst case scenario, I’ll 
 
 I’m going to lead with my biggest takeaway: I wound up writing almost no code for this project. I couldn’t have picked a better time to start this project - the release of [Gemini 3](https://blog.google/products-and-platforms/products/gemini/gemini-3/) and [Opus 4.5](https://www.anthropic.com/news/claude-opus-4-5) along with the maturing platforms of [Cursor](https://cursor.com/) and [Claude Code](https://www.anthropic.com/claude-code) marked a true inflection point for the craft of software.
 
-I’d been deep into agentic coding for the past few years and I’ve had to dramatically recalibrate my understanding of software after this project. Much more on this later…
+I’d been deep into agentic coding for the past few years and I’ve had to dramatically recalibrate my understanding of software after this project.
 
 But before there was a single line of code there was an idea, and it went something like this:
 
 **Let’s use Nano Banana to generate a pixel art map from satellite imagery tile-by-tile.**
 
+And so I started this project as I start almost every project now - [by asking Gemini](/chats/isometric-nyc-initial-gemini).
+
 > 💭 A brief aside - One of my favorite ways to use AI is simply performing tasks at a scale that were previously impossible. Napoleon may have once said “quantity has a quality all its own”. As a former electronic musician who’s spent at least 10,000 hours precisely moving around audio clips, I'm particularly interested in scaling up the grindy repetitive tasks that make many ideas practically impossible.
 
-And so I started this project as I start almost every project now - [by asking Gemini](/docs/isometric-nyc-initial-gemini).
 
 ### / NYC City Data
 
 My initial strategy was to use 3D CityGML data from a variety of sources to render a “whitebox” view of individual tiles. I found a few sources ([NYC 3D](https://www.asg.ed.tum.de/gis/projekte/new-york-city-3d/), [3DCityDB](https://github.com/3dcitydb), [NYC CityGML](http://www.3dcitydb.net/3dcitydb/fileadmin/public/datasets/NYC/NYC_buildings_CityGML_LoD2/NYC_Buildings_LoD2_CityGML.zip)), downloaded some data, and then set cursor up to build out a renderer. And very quickly I had something that worked pretty well.
 
-I can’t stress how big of a deal this is - I’ve never worked with CityGML data before and GIS is notoriously finicky and complex. With a lot of back and forth with the agent correcting for coordinate projection systems and geometry labeling schema, I was pretty quickly able to get a renderer set up that could output 
+I can’t stress how big of a deal this is - I’ve never worked with CityGML data before and GIS is notoriously finicky and complex. With a lot of back and forth with the agent correcting for coordinate projection systems and geometry labeling schema, I was pretty quickly able to get a renderer set up that could output an isometric (orthographic) render of real city geometry superimposed on a satellite image.
 
 ![whitebox render of city geometry plus satellite texture](/img/projects/isometric-nyc/whitebox.png)
 
@@ -51,13 +52,17 @@ I quickly set up a [marimo](https://marimo.io/) notebook to start testing out my
 
 So I started digging again (in consultation with Gemini), and it turns out the Google Maps 3D tiles API is basically exactly what I needed - precise geometry *and* textures in one renderer. Of course, I needed a way to download the geometry for a precise tile, render it in a web renderer (using an orthographic camera) and export those tiles precisely matched with the existing whitebox renders. And sure enough, with a bit of back and forth, the agent was able to build it for me.
 
-[tasks/004_tiles.md](/tasks/004_tiles.md)
+[tasks/004_tiles.md](/tasks/004_tiles)
 
-![web render of city geometry plus from Google Maps 3D tiles](/img/projects/isometric-nyc/web_render.png)
+![isometric web render of city geometry plus from Google Maps 3D tiles](/img/projects/isometric-nyc/web_render.png)
 
 ### / Image Generation
 
-After a bit of prompt fiddling, I was able to get Nano Banana Pro to generate tiles in my preferred style fairly reliably. But generating image assets with Nano Banana has a few big issues:
+After a bit of prompt hacking, I was able to get Nano Banana Pro to generate tiles in my preferred style fairly reliably. 
+
+![generated pixel art image from Nano Banana Pro](/img/projects/isometric-nyc/nano_banana_output.png)
+
+But generating image assets with Nano Banana has a few big issues:
 
 - **Consistency:** Even with reference images, examples, and tons of prompt engineering, Nano Banana still struggles mightily to generate images with the preferred style consistently. I’d guess that it’s *at best* 50/50, which is far from good enough for the estimated 40k tiles I’ll need to generate.  
 - **Cost & Speed:** Simply put, Nano Banana is slow and quite expensive. It simply won’t be possible to generate all of the tiles I’ll need to generate given the cost and speed of a powerful model.
@@ -113,7 +118,7 @@ I built a wide variety of these micro-tools across the application. Here are a f
 - Bounds app to visualize generated/in-progress tiles superimposed on a real map of NYC. Eventually this evolved into a full-fledged boundary polygon editor to determine the edges of the final exported tiles  
 - Water classifier to classify whether or not a given quadrant partially or completely contained water.  
 
-[tasks/014_bounds_app.md](/tasks/014_bounds_app.md)  
+[tasks/014_bounds_app.md](/tasks/014_bounds_app)  
 
 ![debug map showing the tiles that have been generated](/img/projects/isometric-nyc/debug_map.png)
 
@@ -149,7 +154,7 @@ I built a number of micro-tools to help make this work easier, including:
 
 But at the end of the day, the last 10% will take up 90% of the time and, as always, the difference between good enough and great is the amount of love you put into the work.
 
-[tasks/018_water_fix.md](/tasks/018_water_fix.md)  
+[tasks/018_water_fix.md](/tasks/018_water_fix)  
 
 ### / Scaling up
 
