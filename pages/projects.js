@@ -21,6 +21,7 @@ export default function Projects({ projectsData }) {
               >
                 <div>
                   <Image
+                    alt={project.title}
                     src={project.thumbnail}
                     layout="responsive"
                     width={800}

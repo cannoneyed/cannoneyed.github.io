@@ -16,6 +16,10 @@ export default function Header() {
         <div>
           <Link href={"/projects/"}>projects</Link>
         </div>
+        &middot;
+        <div>
+          <Link href={"/essays/"}>essays</Link>
+        </div>
       </nav>
     </header>
   );
