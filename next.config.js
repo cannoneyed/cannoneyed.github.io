@@ -12,8 +12,8 @@ module.exports = withMDX({
   pageExtensions: ["js", "jsx", "mdx"],
   images: {
     loader: "akamai",
-    path: "",
+    path: ghPages ? "/blog/" : "/",
   },
   basePath: ghPages ? "/blog/" : "",
-  assetPrefix: ghPages ? "/blog/" : "",
+  ...(ghPages ? { assetPrefix: "/blog/" } : {}),
 });

@@ -28,7 +28,7 @@ export const makeComponents = () => {
     Citation: (props) => {
       return (
         <sup {...props}>
-          <a href={props.href} target="_blank">
+          <a href={props.href} target="_blank" rel="noreferrer">
             🔗
           </a>
         </sup>
