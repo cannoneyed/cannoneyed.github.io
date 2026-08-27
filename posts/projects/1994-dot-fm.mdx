@@ -1,0 +1,125 @@
+---
+title: 1994.fm
+date: 08/20/2026
+description: coming soon
+thumbnail: /img/projects/1994-dot-fm/1994-dot-fm-header.jpg
+---
+
+<iframe src="https://1994.fm/?dummy-mode=true"
+        width="100%" height="600"
+        allow="autoplay"></iframe>
+
+# / 1994.fm
+
+[1994.fm](https://1994.fm)
+
+It all started with a group text - specifically, a friend sending a [tweet](https://x.com/tonesofmusic/status/2088070345253064834) showing the Billboard Chart from 30 years ago. A piece of weapons-grade content precisely targeting the minds of (musically) nostalgic middle-aged millennials. Another friend replied:
+
+> 💬 “<i>Andy, if you make a clanker make a continuously available version of X-decades-ago billboard top \[genre\] chart I will publicly forgive you for my cynicism and pledge myself and my children to serve as slaves to the coming AGI Singularity God forever</i>”
+
+AI is like catnip for guys with more ideas than sense... And how could I let down the group chat?
+
+## The project
+
+1994.fm is a virtual radio for the 1990s. And because it's a _side_-side project (distraction), it has to be _weird_. You listen from the perspective of the passenger in a pixel-esque Firebird on an endless desert highway (inspired by Penn & Teller's infamous [Desert Bus](https://en.wikipedia.org/wiki/Penn_%26_Teller%27s_Smoke_and_Mirrors#Desert_Bus)). The car radio is the interface: six presets, two knobs, and a dial that lets you time-travel anywhere from 1990 to 1999.
+
+However [bringing radio to the internet](https://www.youtube.com/watch?v=BzAdXyPYKQo) makes you a broadcaster and there are lots of laws about that! I decided early on that we'd use the _listener's_ streaming service to do the actual streaming - the app would serve as a wrapper, supplying the playlist and the chrome while the listener pays the bills. 
+
+But it turns out that **Apple Music** is the only service that really lets you do that. **Spotify**, despite being the market leader (or because of), is deeply hostile to developers. In fact, I’d go so far as to say they seem to _hate freedom_ (more on that later). 
+
+So over the next few days I sat down with my bots and [clanked out](https://x.com/nichochar/status/2088456402419552391) this (stupid) side project - here's how it works, and some takeaways from the long and dusty journey.
+
+
+## On the nature of our craft
+
+Before we start, a brief aside...
+
+I recently attended a wonderful talk on dynamic documents and personal software by [Geoffrey Litt](https://www.geoffreylitt.com/) at the [Recurse Center](https://www.recurse.com/), and I came away feeling an odd sense of nostalgia. It probably didn't help that I was talking to an old colleague of mine (now at Anthropic) about how radically our jobs and lives have changed over the last year. But the idea of sitting down, deeply focusing and tinkering on personal software and creative coding felt quaint, like something from a past that no longer exists.
+
+On the one hand, I'm making more things, trying out more ambitious ideas, and customizing every detail of my digital toolkit. On the other hand, it's just a totally different medium. I'm still _engineering_ - leveraging my expertise, experience, taste, and creativity - but it's just a totally different experience to work with coding agents that decouple the software from the resistance of writing code.
+
+In a past life I was an electronic musician. I started producing music in the early 2000s, right around the time where the transition from analog to digital had reached a tipping point. All of a sudden, kids like me had access to virtual synthesizers and mixing tools that rivaled professional analog gear - hundreds of thousands of dollars of studio equipment in your backpack.
+
+And of course I grew up immersed in the music of the 90s - arguably the zenith of the music industry - where the _physical craft_ of it all was at its peak in terms of money and manpower. On the one hand, it was orders of magnitude more expensive and difficult to record, produce, and consume music. On the other hand, those records really _sing_ because it was so expensive and difficult - every decision expressed through the expert touch and feel of knobs on the mixing console.
+
+And now we're seeing the same kind of tectonic shift in software. This is what it must have felt like to experience the transition to digital from those legendary mixing consoles - you have infinitely more knobs to turn, but you'll never really _feel_ them again.
+
+![SSL 4000G+ console](/img/projects/1994-dot-fm/console.jpg)
+
+## The Radio
+
+Each station's day is a 24-hour ring, and the playlist is generated from a random seed based on the date. Every song and every transition is timeline-driven. A web-worker metronome ticks every 250ms to ensure sync - this engine compares the mathematical timeline against the real SDK playhead and corrects any drift while queuing up the next content. 
+
+Each station's library comes from vendored Billboard chart data - 35 fixtures covering the years 1990-1999 - plus three hand-curated stations (covering genres that didn’t have proper chart coverage). It turns out that this data is a bit harder to get your hands on than I'd expected.
+
+The scheduler uses real radio rotation programming logic: records score on rank, peak, and weeks on chart; they sort into power / A / B / C categories and a fixed clock assigns slots to categories. Power records recur every couple of hours, while deep cuts play once or twice a day. 
+
+Every song is looked up in live Apple Music catalog at build time. Because the Apple Music catalog contains reissues, remasters, compilations, and omissions, we need to square the search results against the chart results and make sure that all selected tracks are the right version (as best we can). Not surprisingly, this was much easier to do using LLM filters than a collection of fragile heuristics. 
+
+<iframe src="https://1994.fm/playlist?station=krock&year=1994"
+        height="480" width="100%"></iframe>
+
+## World building
+
+One of my favorite parts of using AI is the infinite _depth_. It’s always possible to dig further and create more - more variations, more details, more easter eggs. I’d already built the radio, I couldn’t resist building the world.
+
+The talk between songs — station IDs, DJ breaks, callers, and commercials — is all generated by a pipeline that optimizes for creative control, iteration, and inspection. It's designed to let AI to do what it does best and let me correct all the things it does badly as quickly and effectively as possible. I've [said it](https://x.com/_coenen/status/2090159973888065595) many times before: In the age of AI, the difference between slop and art is how much of a shit you give.
+
+Scripts are written by AI and committed as source files. Each station has a character bible: a DJ with a name, an on-air handle, a look, a voice, and a persona — Rick "The Wrench" Marlowe on K-ROCK and the Work-Study Kid on college station KALX.
+
+In order to get compelling audio, I wound up using a _video_ model. I'd used this trick before on [Dear Upstairs Neighbors](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/dear-upstairs-neighbors/) where I did all of the sound design with Veo. It turns out that the richer representations of video models give much more depth, life, and control.
+
+Even the best audio models sounded sterile and flat. I even experimented with a generative DAW to build out the spots more manually, but nothing came close to the "life" and "character" of the video models. I used `veo-lite` to render the DJ (using a starting frame to help with character consistency) and ads (more details below). Unfortunately, clips cap at 8 seconds - but this happens to be the radio liner format. But `veo-lite` is (relatively) fast and cheap - a few minutes and about $0.40 per spot.
+
+Over dozens of passes the pipeline hardened into a small production system: a generation ledger to preserve past iterations; a durable job queue, a keyboard-driven review workbench for auditioning, flagging, A/B-ing, rewriting, and locking all of the spots.
+
+To make the world even richer, I decided to add ads to the mix: 133 spots for 52 fictional businesses in the same desert town. Injury lawyers, gun ranges, monster truck rallies, waterbed barns, and a senator dealing with the "water situation".
+
+The final tally: 253 spots, 600 takes, $161.20 of generation. Every shipped spot was reviewed and iterated manually, so having the right tools for the job was critical.
+
+<iframe src="https://1994.fm/ads" height="480" width="100%"></iframe>
+
+
+## The long and dusty road
+
+The view out the windshield is a WebGL pixel-art-esque desert rendered at 480×270, and the cabin is drawn pixel-by-pixel with the same fat pixels as the road. The sky tracks the listener's real clock, and different landscapes are randomly generated for each session.
+
+The cabin is full of physics toys using spring math: fuzzy dice that fling and bounce, a hula dancer on a damped tilt spring, road bumps on a determined schedule so one pothole rocks everything at once. And because I can’t help myself, I included more than a dozen easter eggs — a highway patrol that creeps in the mirror, a blown retread that thumps the suspension, a coyote whose eyeshine you see before you see the animal.
+
+The app runs on my own home-rolled web framework (more on this very soon) that leverages system-enforced rules and determinism: For example, `Math.random()` and `Date.now()` are banned; time and randomness are both explicitly injected. This makes it much easier for agents to debug and manage complex state.
+
+<iframe src="https://1994.fm/layers" height="480" width="100%"></iframe>
+
+## The software kitchen
+
+I wrote earlier this year about the [Software Industrial Revolution](https://cannoneyed.com/essays/software-industrial-revolution), and since then everyone's become obsessed with the idea of building _Software Factories_. After working in this space for more than a year, I think that it's a bad framing. "Software Factory" implies a sort of end-to-end automation and hands-off operation that leads to misalignment - both for models which are becoming increasingly trained to build things in a one-shot way, and our industry which is incentivized to performatively ship more and more shit that nobody wants.
+
+What I want is more like a _Software Kitchen_, a space full of high-quality tools where I can work _in tandem_ with AI to design, craft, build, and test new and interesting ideas. It's not a great metaphor, but a factory makes Twinkies and Doritos - a kitchen makes _food_.
+
+This project was full of the "micro-tools" that I've found myself building more and more of. Tools for creating the DJs and ads, for curating and auditing the playlist and algorithm, for tuning the parameters of the rendering engine, for debugging the application layout - for every line of code in the _actual_ application there's probably 10 for the meta-application, and I've really leaned into this pattern for the last year as I've completely delegated code writing to AI while working towards maximum creative and process control.
+
+## By the numbers
+**60** station-years on the dial <br/>
+**253** interlude spots shipped <br/>
+**600** takes rendered <br/>
+**$161** total generation spend <br/>
+**52** advertisers <br/>
+**52** glovebox trinkets <br/>
+**29k** lines of code <br/>
+**5** days of clanking <br/>
+
+## Freedom
+
+Finally - I’m an American, and maybe it’s the fact that I’m writing this shortly after the 250th birthday of our country, but I’m growing increasingly concerned about the nature of our freedoms as we march towards the singularity.
+
+A trivial but illustrative example: I’ve been a subscriber to Spotify for more than a decade. I've paid them hundreds if not thousands of dollars, and yet I own _nothing_. I certainly don't own the music, I don't own the data, and I don't own the right to listen to it outside of their increasingly enshittifying algorithm and app. 
+
+When I set out to build this app, I learned that it would be impossible to build for Spotify users. Spotify restricts developers to a maximum of **FIVE** users (who must be explicitly whitelisted) of apps that use their API. Five. Whole. Users.
+
+Of course, the trade we make is ownership for convenience - after all, it's hugely expensive to stream all those bits and build all of that infra. Or it _was_.
+
+In the age of AI, this bargain no longer holds. It's trivial for anyone with even a bit of computer savvy to build any app they want anywhere they want in a matter of minutes. Want a Winamp clone written in Rust? 15 minutes and $5 in credits (Claude and Codex really whip the llama's ass.). But want to stream the music or videos that you pay for (every month) from one box to another? Turns out that's illegal under DMCA, and the big labs are even restricting legitimate uses of their models under the guise of "cybersecurity".
+
+I believe the future demands a new set of rules that let us truly _own_ things again. In a world that's becoming completely digital, this is more important than ever. And maybe I'm being too optimistic, but I believe AI gives us a chance to wrest back control of our digital lives from the platforms and algorithms. It's a once-in-a-lifetime opportunity, and we need to take it.
+
+Think about it: a future where **we** control what our computers do without the constraints of abused copyright law and addictive algorithms, and extractive plaforms. AI finally gives us a lever to take back ownership of our machines and our digital lives.
