@@ -11,6 +11,7 @@
 
 .mainColumn {
   width: 60vw;
+  max-width: 1000px;
   padding: 10px;
 }
 
