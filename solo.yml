@@ -1,8 +1,7 @@
-# Visit https://soloterm.com to learn more
 name: cannoneyed.github.io
 icon: null
 processes:
-  Next.js:
+  dev:
     command: bun run dev
     working_dir: null
     auto_start: false

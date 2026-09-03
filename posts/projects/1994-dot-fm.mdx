@@ -13,40 +13,38 @@ thumbnail: /img/projects/1994-dot-fm/1994-dot-fm-header.jpg
 
 [1994.fm](https://1994.fm)
 
-It all started with a group text - specifically, a friend sending a [tweet](https://x.com/tonesofmusic/status/2088070345253064834) showing the Billboard Chart from 30 years ago. A piece of weapons-grade content precisely targeting the minds of (musically) nostalgic middle-aged millennials. Another friend replied:
+It all started with a group text - specifically, a link to a [tweet](https://x.com/tonesofmusic/status/2088070345253064834) showing the Billboard Chart from 30 years ago. A piece of weapons-grade content precisely targeting the minds of nostalgic middle-aged millennials. Another friend replied:
 
 > 💬 “<i>Andy, if you make a clanker make a continuously available version of X-decades-ago billboard top \[genre\] chart I will publicly forgive you for my cynicism and pledge myself and my children to serve as slaves to the coming AGI Singularity God forever</i>”
 
-AI is like catnip for guys with more ideas than sense... And how could I let down the group chat?
+How could I say no to _that_?
 
 ## The project
 
-1994.fm is a virtual radio for the 1990s. And because it's a _side_-side project (distraction), it has to be _weird_. You listen from the perspective of the passenger in a pixel-esque Firebird on an endless desert highway (inspired by Penn & Teller's infamous [Desert Bus](https://en.wikipedia.org/wiki/Penn_%26_Teller%27s_Smoke_and_Mirrors#Desert_Bus)). The car radio is the interface: six presets, two knobs, and a dial that lets you time-travel anywhere from 1990 to 1999.
+1994.fm is a virtual radio for the 1990s. And because it's a _side_-side project (i.e. distraction), it has to be _weird_. You listen from the perspective of the passenger in a pixel-esque Firebird on an endless desert highway (inspired by Penn & Teller's infamous [Desert Bus](https://en.wikipedia.org/wiki/Penn_%26_Teller%27s_Smoke_and_Mirrors#Desert_Bus)). The car and its radio is the interface. Six presets, two knobs, and a dial that lets you time-travel from 1990 to 1999.
 
-However [bringing radio to the internet](https://www.youtube.com/watch?v=BzAdXyPYKQo) makes you a broadcaster and there are lots of laws about that! I decided early on that we'd use the _listener's_ streaming service to do the actual streaming - the app would serve as a wrapper, supplying the playlist and the chrome while the listener pays the bills. 
-
-But it turns out that **Apple Music** is the only service that really lets you do that. **Spotify**, despite being the market leader (or because of), is deeply hostile to developers. In fact, I’d go so far as to say they seem to _hate freedom_ (more on that later). 
-
-So over the next few days I sat down with my bots and [clanked out](https://x.com/nichochar/status/2088456402419552391) this (stupid) side project - here's how it works, and some takeaways from the long and dusty journey.
+Over the next few days I sat down with my bots and [clanked out](https://x.com/nichochar/status/2088456402419552391) this (stupid) side project - here's how it works, and some takeaways from the long and dusty journey.
 
 
 ## On the nature of our craft
 
 Before we start, a brief aside...
 
-I recently attended a wonderful talk on dynamic documents and personal software by [Geoffrey Litt](https://www.geoffreylitt.com/) at the [Recurse Center](https://www.recurse.com/), and I came away feeling an odd sense of nostalgia. It probably didn't help that I was talking to an old colleague of mine (now at Anthropic) about how radically our jobs and lives have changed over the last year. But the idea of sitting down, deeply focusing and tinkering on personal software and creative coding felt quaint, like something from a past that no longer exists.
+I recently attended a wonderful talk on dynamic documents and personal software by [Geoffrey Litt](https://www.geoffreylitt.com/) at the [Recurse Center](https://www.recurse.com/), and I came away feeling an odd sense of nostalgia. It probably didn't help that I was talking to an old [colleague](https://roadtolarissa.com/) of mine (now at Anthropic) about how radically our jobs and lives have changed over the last year. But the idea of sitting down, deeply focusing and tinkering on personal software and creative coding felt quaint, like something from a past that no longer exists.
 
 On the one hand, I'm making more things, trying out more ambitious ideas, and customizing every detail of my digital toolkit. On the other hand, it's just a totally different medium. I'm still _engineering_ - leveraging my expertise, experience, taste, and creativity - but it's just a totally different experience to work with coding agents that decouple the software from the resistance of writing code.
 
-In a past life I was an electronic musician. I started producing music in the early 2000s, right around the time where the transition from analog to digital had reached a tipping point. All of a sudden, kids like me had access to virtual synthesizers and mixing tools that rivaled professional analog gear - hundreds of thousands of dollars of studio equipment in your backpack.
+In a past life I was an [electronic musician](https://cannoneyed.com/projects/led-light-wall). I started producing music in the early 2000s, right around the time where the transition from analog to digital had reached a tipping point. All of a sudden, kids like me had access to virtual synthesizers and mixing tools that rivaled professional analog gear - hundreds of thousands of dollars of studio equipment on your laptop.
 
-And of course I grew up immersed in the music of the 90s - arguably the zenith of the music industry - where the _physical craft_ of it all was at its peak in terms of money and manpower. On the one hand, it was orders of magnitude more expensive and difficult to record, produce, and consume music. On the other hand, those records really _sing_ because it was so expensive and difficult - every decision expressed through the expert touch and feel of knobs on the mixing console.
+And of course I grew up immersed in the music of the 90s - arguably the zenith of the music industry - where the _physical craft_ of it all was at its peak in terms of money and manpower. On the one hand, it was orders of magnitude more expensive and difficult to record, produce, and consume music. On the other hand, those records really sing _because_ it was so expensive and difficult to produce. And we listened more intensely _because_ they were so expensive and difficult to consume. These records were made by true masters of their craft - every decision elevated through the expert touch and feel of knobs on the mixing console.
 
-And now we're seeing the same kind of tectonic shift in software. This is what it must have felt like to experience the transition to digital from those legendary mixing consoles - you have infinitely more knobs to turn, but you'll never really _feel_ them again.
+Today we're seeing the same kind of tectonic shift in software. This is what it must have felt like to experience the transition to digital from behind those legendary mixing consoles - you have infinitely more knobs to turn, but you'll never really _feel_ them again.
 
 ![SSL 4000G+ console](/img/projects/1994-dot-fm/console.jpg)
 
 ## The Radio
+
+I decided early on that we'd use the _listener's_ streaming service to do the actual streaming - the app would serve as a wrapper, supplying the playlist and the chrome while the listener pays the bills. Pluse, [putting radio on the internet](https://www.youtube.com/watch?v=BzAdXyPYKQo) makes you a broadcaster and there are lots of laws about that! But it turns out that **Apple Music** is the only service that really lets you do that. **Spotify**, despite being the market leader (or because of), is deeply hostile to developers. In fact, I’d go so far as to say they seem to _hate freedom_ (more on that later). 
 
 Each station's day is a 24-hour ring, and the playlist is generated from a random seed based on the date. Every song and every transition is timeline-driven. A web-worker metronome ticks every 250ms to ensure sync - this engine compares the mathematical timeline against the real SDK playhead and corrects any drift while queuing up the next content. 
 
@@ -84,9 +82,9 @@ The final tally: 253 spots, 600 takes, $161.20 of generation. Every shipped spot
 
 The view out the windshield is a WebGL pixel-art-esque desert rendered at 480×270, and the cabin is drawn pixel-by-pixel with the same fat pixels as the road. The sky tracks the listener's real clock, and different landscapes are randomly generated for each session.
 
-The cabin is full of physics toys using spring math: fuzzy dice that fling and bounce, a hula dancer on a damped tilt spring, road bumps on a determined schedule so one pothole rocks everything at once. And because I can’t help myself, I included more than a dozen easter eggs — a highway patrol that creeps in the mirror, a blown retread that thumps the suspension, a coyote whose eyeshine you see before you see the animal.
+The cabin is full of physics toys using spring math: fuzzy dice that fling and bounce, a hula dancer on a damped tilt spring, road bumps on a determined schedule so one pothole rocks everything at once. And because I can’t help myself, I included more than a dozen easter eggs — a highway patrol that creeps in the mirror, a blown tire that thumps the suspension, tumbleweeds, coyotes, and lonely hitchikers.
 
-The app runs on my own home-rolled web framework (more on this very soon) that leverages system-enforced rules and determinism: For example, `Math.random()` and `Date.now()` are banned; time and randomness are both explicitly injected. This makes it much easier for agents to debug and manage complex state.
+The app runs on my own home-rolled web framework (more on this soon) that leverages system-enforced rules and determinism: For example, `Math.random()` and `Date.now()` are banned; time and randomness are both explicitly injected. This makes it much easier for agents to debug and manage complex state.
 
 <iframe src="https://1994.fm/layers" height="480" width="100%"></iframe>
 
@@ -110,16 +108,31 @@ This project was full of the "micro-tools" that I've found myself building more 
 
 ## Freedom
 
-Finally - I’m an American, and maybe it’s the fact that I’m writing this shortly after the 250th birthday of our country, but I’m growing increasingly concerned about the nature of our freedoms as we march towards the singularity.
+Finally - I’m an American, and maybe it’s the fact that I’m writing this shortly after the 250th birthday of our country, but I’m growing increasingly concerned about the nature of our freedoms as we march into the singularity.
 
 A trivial but illustrative example: I’ve been a subscriber to Spotify for more than a decade. I've paid them hundreds if not thousands of dollars, and yet I own _nothing_. I certainly don't own the music, I don't own the data, and I don't own the right to listen to it outside of their increasingly enshittifying algorithm and app. 
 
 When I set out to build this app, I learned that it would be impossible to build for Spotify users. Spotify restricts developers to a maximum of **FIVE** users (who must be explicitly whitelisted) of apps that use their API. Five. Whole. Users.
 
-Of course, the trade we make is ownership for convenience - after all, it's hugely expensive to stream all those bits and build all of that infra. Or it _was_.
+Of course, the trade we make is ownership for convenience - after all, it's hugely expensive to stream all those bits and build all of that infra. But it's not anymore.
 
-In the age of AI, this bargain no longer holds. It's trivial for anyone with even a bit of computer savvy to build any app they want anywhere they want in a matter of minutes. Want a Winamp clone written in Rust? 15 minutes and $5 in credits (Claude and Codex really whip the llama's ass.). But want to stream the music or videos that you pay for (every month) from one box to another? Turns out that's illegal under DMCA, and the big labs are even restricting legitimate uses of their models under the guise of "cybersecurity".
+In the age of AI, this bargain no longer holds. It's trivial for anyone with even a bit of computer savvy to build any app they want anywhere they want in a matter of minutes. Want a Winamp clone written in Rust? 15 minutes and $5 in credits (Codex really whips the llama's ass.). But want to stream the music or videos that you pay for (every month) from one box to another? Turns out that's illegal under DMCA, and the big labs are even restricting legitimate uses of their models under the guise of "cybersecurity".
 
 I believe the future demands a new set of rules that let us truly _own_ things again. In a world that's becoming completely digital, this is more important than ever. And maybe I'm being too optimistic, but I believe AI gives us a chance to wrest back control of our digital lives from the platforms and algorithms. It's a once-in-a-lifetime opportunity, and we need to take it.
 
-Think about it: a future where **we** control what our computers do without the constraints of abused copyright law and addictive algorithms, and extractive plaforms. AI finally gives us a lever to take back ownership of our machines and our digital lives.
+Think about it: a future where **we** control what our computers do without the constraints of abused copyright law, addictive algorithms, and extractive plaforms. For those of us who grew up in the 90s, it's original dream of the internet. An blank canvas to be filled with infinite possibilities. A space as open and free as the desert itself.
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<iframe src="https://1994.fm/?dummy-mode=true"
+        width="100%" height="600"
+        allow="autoplay"></iframe>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
